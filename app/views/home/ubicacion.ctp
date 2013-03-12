@@ -1,0 +1,2 @@
+<h2> Ubicaci&oacute;n de la Boutique </h2>
+<iframe width="960" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?msid=216122612535371809896.0004b473c4ed763a0fa91&amp;msa=0&amp;ie=UTF8&amp;ll=-17.393798,-66.152265&amp;spn=0.008139,0.016512&amp;t=m&amp;vpsrc=6&amp;output=embed"></iframe><br />
