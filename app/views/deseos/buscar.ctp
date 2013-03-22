@@ -8,7 +8,7 @@
 	<fieldset>
 		
 	<?php
-		echo $form->input('nombre',array('label'=>'Nombre o Apellido'));
+		echo $form->input('nombre',array('label'=>'Nombre o Apellido','placeholder'=>'Busca por Nombre o Apellido'));
 	?>
 	<?php echo $form->end('Buscar Deseos');?>
 

@@ -4,8 +4,8 @@
 		
 	<?php
     	echo $form->create('Usuario', array('action' => 'login'));
-    	echo $form->input('email');
-   		echo $form->input('password');
+		echo $form->input('email',array('placeholder'=>'Tuemail@TuDominio.com'));
+   		echo $form->input('password',array('placeholder'=>'*****'));
     	echo $form->end('Login');
 	?>
 	</fieldset>

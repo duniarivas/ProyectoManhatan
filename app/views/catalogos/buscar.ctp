@@ -7,7 +7,7 @@
 	<fieldset>
 		
 	<?php
-		echo $form->input('nombre',array('label'=>'Nombre'));
+		echo $form->input('nombre',array('label'=>'Nombre','placeholder'=>'Buscar en el Catalogo por Nombre'));
 	?>
 	<?php echo $form->end('Buscar Items');?>
 

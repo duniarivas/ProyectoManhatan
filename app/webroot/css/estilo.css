@@ -33,15 +33,27 @@ body {
 	margin: 0;
 }
 a {
-	color: #003d4c;
+	color: rgb(149,92,167);
 	text-decoration: underline;
 	font-weight: bold;
 	font-family: 'Marko One', serif;
 	font-size: 100%;
+	transition: all 1s;
 }
 a:hover {
-	color: #367889;
+	color: rgb(193,137,224);
 	text-decoration:none;
+}
+#footer a{
+	color: rgb(225,225,225);
+}
+#footer a:hover{
+	color: rgb(193,137,224);
+	text-decoration:none;
+}
+#lado-derecho a:hover{
+	transition: all 0.5s;
+	font-size: 110%;
 }
 a img {
 	border:none;
@@ -566,7 +578,8 @@ fieldset {
 }
 fieldset legend {
 	background:#fff;
-	color: #e32;
+	color: rgb(160,0,160);
+	text-shadow: rgb(225,225,225) 0px 1px 0px;
 	font-size: 160%;
 	font-weight: bold;
 }
@@ -651,18 +664,28 @@ input[type=submit] {
 	font-size: 110%;
 	width: auto;
 }
+input[type=text]{
+	border-radius: 15px;
+	font-family:'Skranji', cursive;
+}
+input[type=password]{
+	border-radius: 15px;
+	font-family:'Skranji', cursive;
+}
 form .submit input[type=submit] {
-	background:#62af56;
-	background: -webkit-gradient(linear, left top, left bottom, from(#a8ea9c), to(#62af56));
-	background-image: -moz-linear-gradient(top, #a8ea9c, #62af56);
-	border-color: #2d6324;
-	color: #000;
-	text-shadow: #8cee7c 0px 1px 0px;
+	border: none;
+	background: rgb(160, 0, 160);
+	color: rgb(255,255,255);
+	box-shadow: 2px 2px 2px rgb(200,130,220);
+	-moz-transition: all 1s;
 }
 form .submit input[type=submit]:hover {
-	background:#4ca83d;
-	background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
-	background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
+	border: none;
+	background: rgb(200,130,220);
+	text-shadow: rgb(200,200,200) 0px 1px 0px;
+	box-shadow: 2px 2px 2px rgb(160, 0, 160);
+	cursor: pointer;
+	-moz-transition: all 1s;
 }
 
 /** Avisos y Errores **/
