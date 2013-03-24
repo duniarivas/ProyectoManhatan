@@ -95,6 +95,7 @@ class UsuariosController extends  AppController {
 	
 	function password(){
 		$this->layout = 'default';
+		
 		if (!empty($this->data)) {
 				
 			if ($this->data['Usuario']['password'] ==
@@ -102,7 +103,7 @@ class UsuariosController extends  AppController {
 				
 				if ($this->Usuario->save($this->data)) {
 					$this->Session->setFlash('Password ha Sido Cambiado.');
-					$this->redirect(array('action'=>'perfil',$data['Usuario']['id']),null, true);
+					$this->redirect(array('action'=>'perfil',$this->data['Usuario']['id']),null, true);
 				} else {
 					$this->Session->setFlash('Password no pudo ser Cambiado.');
 				}
