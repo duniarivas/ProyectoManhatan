@@ -62,6 +62,8 @@ class DireccionesController extends  AppController {
 		$usuario = $this->Auth->user();
 		$this->set('usuarioID',$usuario['Usuario']['id']);
 		
+		if ($usuario['Usuario']['tipo'] != 0)
+                    $this->layout='default';
 	}
 	
 	
