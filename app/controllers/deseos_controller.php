@@ -112,7 +112,7 @@ class DeseosController extends  AppController {
 								'Usuario.id' => 'asc'
 								),
 								'limit' => 5,
-								 'fields' => array('DISTINCT (Usuario.id) as id, Usuario.nombre, Usuario.apellido')
+								 'fields' => array('DISTINCT (Usuario.id) as id, Usuario.nombre, Usuario.apellido, Usuario.email')
 							);
 		$perfiles = null;
 		if(!empty($this->data)){

@@ -1,3 +1,9 @@
+<?php
+	function gravatar($email){
+		$size = 50;
+		return "http://www.gravatar.com/avatar/".md5(strtolower(trim($email)))."?size=".$size; 
+	}
+?>
 <div id="lado-izquierdo">
 	<?php echo $this->element('menuUsuario'); ?>
 </div>
@@ -16,11 +22,12 @@
 	
 	Perfiles:
 	<hr>
-	<ul>
+	<ul style="padding: 10px; list-style: none;">
 		<?php
 		if($perfiles != null){
 			foreach($perfiles as $perfil){
 				echo "<li>";
+				echo "<img src='".gravatar($perfil['Usuario']['email'])."' /> ";
 				echo $html->link($perfil['Usuario']['nombre']." ".$perfil['Usuario']['apellido'],
 									array('controller'=>'deseos',
 											'action'=>'perfil',

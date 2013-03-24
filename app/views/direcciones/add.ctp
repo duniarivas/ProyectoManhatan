@@ -5,11 +5,11 @@
 	<fieldset>
 		<legend>Agregar Nueva Direccion</legend>
 		<?php
-			echo $form->input('direccion1',array('label'=>'Direccion1'));
-			echo $form->input('direccion2',array('label'=>'Direccion2'));
-			echo $form->input('ciudad',array('label'=>'Ciudad'));
-			echo $form->input('telefono',array('label'=>'Telefono'));
-			echo $form->input('fax',array('label'=>'Fax'));
+			echo $form->input('direccion1',array('label'=>'Direccion1','placeholder'=>'Linea 1 de Direccion'));
+			echo $form->input('direccion2',array('label'=>'Direccion2','placeholder'=>'Linea 1 de Direccion'));
+			echo $form->input('ciudad',array('label'=>'Ciudad','placeholder'=>'Ciudad de Procedencia'));
+			echo $form->input('telefono',array('label'=>'Telefono','placeholder'=>'Numero Telefonico'));
+			echo $form->input('fax',array('label'=>'Fax','placeholder'=>'Numero de Fax'));
 			echo $form->input('usuario_id',array('type'=>'hidden','value'=>$usuarioID));
 			echo $form->input('paise_id', array('label'=>'Pais'));
 		?>
