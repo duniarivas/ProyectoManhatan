@@ -17,6 +17,7 @@
 	
 	<?php echo $form->end('Agregar Direcciones');?>
 	<!-- FIN DE FORMULARIO -->
+        <?php if ($usuarioTipo == 0) : ?>
 	<fieldset>
 		<!-- Link Listar -->
 		<?php echo $html->image('list.png',
@@ -24,4 +25,5 @@
 								'width'=>'16px', 'height'=>'16px',
 								'url'=>array('action'=>'index'))); ?>				
 	</fieldset>
+        <?php endif; ?>
 </div>
