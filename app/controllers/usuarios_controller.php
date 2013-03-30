@@ -6,6 +6,7 @@ class UsuariosController extends  AppController {
 	var $uses= array('Usuario','Direccione');
 	
 	function login() {
+            $this->layout = 'login';
 	}
  
 	function logout() {
@@ -53,27 +54,6 @@ class UsuariosController extends  AppController {
 				$this->Session->setFlash('Los Passwords No Coinciden.');
 			}
 		}
-                /*
-                if( empty($this->data) ){
-                    $this->render();
-                    
-                }
-                
-                if ( $this->data['Usuario']['password'] != $this->Auth->password($this->data['Usuario']['passwordConfirm']) ) {
-                    $this->Session->setFlash('Los Passwords No Coinciden.');
-                    return;
-                }
-                
-                $this->Usuario->create();
-		
-		if (!$this->Usuario->save($this->data) ){
-		    $this->Session->setFlash('Usted no pudo registrarse. Intente Nuevamente.');
-                    return;
-                }
-                
-		// Passwords match, continue processing
-		$this->Session->setFlash('Usted fue registrado exitosamente. Puede Iniciar Sesion');
-		$this->redirect( array('controller'=>'home','action'=>'index'), null, true );*/
 	}
 
 	function perfil(){
@@ -121,8 +101,6 @@ class UsuariosController extends  AppController {
 	 *	Metodo Administrador
 	 */
 	function index(){
-		$this->soloAdministrador($this->Auth->user());
-
 		$this->layout='admin';		
 		$this->set('usuarios', $this->Usuario->find('all'));
 	}
@@ -150,8 +128,6 @@ class UsuariosController extends  AppController {
 	 *	Metodo Administrador
 	 */
 	function delete($id = null){
-		$this->soloAdministrador($this->Auth->user());
-
 		$this->layout='admin';
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
@@ -170,10 +146,7 @@ class UsuariosController extends  AppController {
 	 *	Metodo Administrador
 	 */
 	function email(){
-		//$this->soloAdministrador($this->Auth->user());
-		
-
-		//$this->layout='admin';
+		$this->layout='admin';
 		if (!empty($this->data) ){
 			$usuarios = $this->Usuario->find('all');
 			

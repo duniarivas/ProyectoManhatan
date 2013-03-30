@@ -10,26 +10,23 @@ class CaracteristicasController extends  AppController {
               );
 			  
 	function add($idItem = null){
-		if (!empty($this ->data) ){
-			$this-> Caracteristica ->create();
-			if ($this->Caracteristica->save($this->data)) {
-				$this->Session->setFlash('La caracteristica a sido guardada');
-				$this->redirect( array('action' => 'index',$this->data['Caracteristica']['item_id']), null, true);
-			} else {
-				$this->Session->setFlash('La tarea no fue guardada');
-			}
-		}
-		if($idItem == null){
-			$this->set('items', $this->Caracteristica->Item->find('list'));
-		} else {
-			$this->set('items', $this->Caracteristica->Item->find('list',
-																	array(
-																	'conditions'=>
-																		array('Item.id'=>$idItem)
-																	)
-															)
-						);
-		}
+            if($idItem == null){
+		    $this->set('items', $this->Caracteristica->Item->find('list'));
+	    } else {
+		$this->set('items', $this->Caracteristica->Item->find('list',array('conditions'=>array('Item.id'=>$idItem) ) )
+			);
+	    }
+                
+	    if (empty($this ->data) )
+                return;
+	    
+            $this-> Caracteristica ->create();
+            if ($this->Caracteristica->save($this->data)) {
+		$this->Session->setFlash('La caracteristica a sido guardada');
+		$this->redirect( array('action' => 'index',$this->data['Caracteristica']['item_id']), null, true);
+	    } else {
+		$this->Session->setFlash('La tarea no fue guardada');
+	    }
 	}
 
 	function index($id = null){
@@ -78,6 +75,4 @@ class CaracteristicasController extends  AppController {
 	}
 	
 }
-
 ?>
-	

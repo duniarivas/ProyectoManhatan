@@ -51,8 +51,5 @@ class DetallesController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
 }
-	
 ?>
-	

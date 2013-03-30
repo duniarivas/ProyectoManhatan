@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2013 at 09:18 PM
+-- Generation Time: Mar 30, 2013 at 05:44 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `caracteristicas` (
   `modified` datetime DEFAULT NULL COMMENT 'Fecha de última modificación de datos',
   `item_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla item',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `caracteristicas`
 --
 
 INSERT INTO `caracteristicas` (`id`, `talla`, `color`, `stock`, `created`, `modified`, `item_id`) VALUES
-(6, 'S', 'Plomo', 10, '2011-12-11 19:43:38', '2011-12-13 06:42:49', 8),
+(6, 'S x', 'Plomo', 10, '2011-12-11 19:43:38', '2013-03-28 21:27:19', 8),
 (7, 'M', 'Plomo', 10, '2011-12-13 06:41:09', '2011-12-13 06:41:09', 8),
 (8, '10', 'Plateado y Rojo', 10, '2011-12-18 20:55:14', '2011-12-18 20:55:14', 28),
 (9, '11', 'Plateado y Rojo', 10, '2011-12-18 20:55:31', '2011-12-18 20:55:31', 28),
@@ -83,7 +83,16 @@ INSERT INTO `caracteristicas` (`id`, `talla`, `color`, `stock`, `created`, `modi
 (45, 'Unica', 'Negro', 20, '2011-12-20 15:26:51', '2011-12-20 15:26:51', 24),
 (46, 'Unica', 'Plomo y Negro', 10, '2011-12-20 15:27:12', '2011-12-20 15:27:12', 25),
 (47, 'Unica', 'Blanco', 10, '2011-12-20 15:27:43', '2011-12-20 15:27:43', 26),
-(48, 'Unica', 'Rojo', 10, '2011-12-20 15:28:01', '2011-12-20 15:28:01', 27);
+(48, 'Unica', 'Rojo', 10, '2011-12-20 15:28:01', '2011-12-20 15:28:01', 27),
+(49, '5.5', 'Negro', 10, '2013-03-30 16:04:00', '2013-03-30 16:04:00', 36),
+(50, '6.5', 'Negro', 10, '2013-03-30 16:07:32', '2013-03-30 16:07:32', 36),
+(51, '7.5', 'Negro', 10, '2013-03-30 16:12:45', '2013-03-30 16:12:45', 36),
+(52, '5.5', 'Negro', 10, '2013-03-30 17:25:00', '2013-03-30 17:25:00', 37),
+(53, '6.5', 'Negro', 10, '2013-03-30 17:25:13', '2013-03-30 17:25:13', 37),
+(54, '7.5', 'Negro', 10, '2013-03-30 17:25:23', '2013-03-30 17:25:23', 37),
+(55, '5.5', 'Negro', 10, '2013-03-30 17:27:39', '2013-03-30 17:27:39', 38),
+(56, '6.5', 'Negro', NULL, '2013-03-30 17:27:50', '2013-03-30 17:27:50', 38),
+(57, '7.5', 'Negro', 10, '2013-03-30 17:28:01', '2013-03-30 17:28:01', 38);
 
 -- --------------------------------------------------------
 
@@ -95,14 +104,14 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(150) DEFAULT NULL COMMENT 'Nombre de Categoría de Prenda',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
-(7, 'Pantalones'),
+(7, 'Pantalones '),
 (8, 'Vestidos'),
 (9, 'Sacos'),
 (10, 'Blusas'),
@@ -111,7 +120,8 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 (13, 'Chompas'),
 (14, 'Camisas'),
 (15, 'Accesorios'),
-(16, 'Camperas');
+(16, 'Camperas'),
+(17, 'Zapatos');
 
 -- --------------------------------------------------------
 
@@ -126,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `usuario_id` int(11) NOT NULL COMMENT 'Llave foránea de usuario',
   `item_id` int(11) NOT NULL COMMENT 'Llave foránea de item',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `comentarios`
@@ -137,7 +147,7 @@ INSERT INTO `comentarios` (`id`, `comentario`, `created`, `usuario_id`, `item_id
 (2, 'Buen Item!', '2011-09-27 00:54:43', 2, 8),
 (3, 'Genial xD', '2011-09-27 00:55:15', 2, 8),
 (4, 'Excelente Item', '2011-10-01 15:00:43', 4, 8),
-(5, NULL, '2011-12-15 03:51:04', 0, 0),
+(20, 'beautiful', '2013-03-28 21:19:33', 0, 0),
 (6, 'Prueba\r\n', '2011-12-15 03:53:48', 2, 8),
 (7, 'Prueba 2\r\n', '2011-12-15 03:55:18', 2, 8),
 (8, 'Prueba 3', '2011-12-15 03:55:42', 2, 8),
@@ -205,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `direcciones` (
   `usuario_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla usuario',
   `paise_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla País',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `direcciones`
@@ -213,8 +223,9 @@ CREATE TABLE IF NOT EXISTS `direcciones` (
 
 INSERT INTO `direcciones` (`id`, `direccion1`, `direccion2`, `ciudad`, `telefono`, `fax`, `usuario_id`, `paise_id`) VALUES
 (2, 'Calle Los Robles', 'Esquina Jose Acha #6754', 'Cochabamba', '4322123', '', 2, 29),
-(3, 'Av. 21 de Enero', 'Blanco Galindo km 8', 'Cochabamba', '4375529', '', 4, 29),
-(4, 'avenida 21 de enero', 'blanco galindo km 8', 'cochabamba', '4375529', '', 13, 29);
+(3, 'Av. 21 de Enero', 'Blanco Galindo km 8', 'Cochabamba', '4375529', '', 23, 29),
+(4, 'avenida 21 de enero', 'blanco galindo km 8', 'cochabamba', '4375529', '', 13, 29),
+(9, 'C/ Jose Quintin Mendoza', 'Zona Norte', 'Cochabamba', '4281228', '', 28, 29);
 
 -- --------------------------------------------------------
 
@@ -227,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `imagenes` (
   `url` varchar(1024) NOT NULL COMMENT 'URL de la imágen',
   `item_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla item',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `imagenes`
@@ -259,7 +270,10 @@ INSERT INTO `imagenes` (`id`, `url`, `item_id`) VALUES
 (43, '/files/uploads/22michael-kors-255.png', 32),
 (44, '/files/uploads/23roberta-di-camerino-450.png', 34),
 (45, '/files/uploads/24gianfranco-ferre-490.png', 33),
-(46, '/files/uploads/25furla-155.png', 35);
+(46, '/files/uploads/25furla-155.png', 35),
+(47, '/files/uploads/26embroderied.jpg', 36),
+(48, '/files/uploads/27zapato_tacon_1.jpg', 37),
+(49, '/files/uploads/28zapatotacon2.jpg', 38);
 
 -- --------------------------------------------------------
 
@@ -280,7 +294,7 @@ CREATE TABLE IF NOT EXISTS `items` (
   `rating` decimal(3,1) unsigned DEFAULT '0.0' COMMENT 'Resultado entre 1 y 5 del rating del Item',
   `votes` int(11) unsigned DEFAULT '0' COMMENT 'Cantidad de votos del item',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `items`
@@ -311,8 +325,11 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `peso`, `material`, `descripcion`
 (31, 'Delfina Delettrez Aretes', 250, 0.2, 'Bañado En Oro', 'Aretes Delfina Delettrez Abejas Bañado en Oro', '2011-12-01 04:46:21', '2012-09-24 22:05:53', 37, 2.5, 2),
 (32, 'Michael Kors', 255, 0.3, 'Sintetico, Cuerina', 'Cartera Purpura de Cuerina y Sintetico', '2011-12-01 04:53:31', '2011-12-01 04:53:31', 31, 0.0, 0),
 (33, 'GianFranco Ferre', 490, 0.5, 'Sintetico', 'Cartera Grande Gianfranco Ferre, Purpura', '2011-12-01 04:54:21', '2012-09-08 11:24:42', 31, 5.0, 1),
-(34, 'Roberta di Camerino', 450, 0.6, 'Sintetico', 'Cartera Grande Negro, Roberta de Camerino 450', '2011-12-01 04:55:10', '2011-12-01 04:55:10', 31, 0.0, 0),
-(35, 'Furla', 155, 0.5, 'Sintetico', 'Cartera Mediana Sintetica, Ploma', '2011-12-01 04:55:46', '2011-12-01 04:55:46', 31, 0.0, 0);
+(34, 'Roberta di Camerino', 450, 0.6, 'Sintetico', 'Cartera Grande Negro, Roberta de Camerino 450', '2011-12-01 04:55:10', '2013-03-28 04:55:40', 31, 3.0, 1),
+(35, 'Furla', 155, 0.5, 'Sintetico', 'Cartera Mediana Sintetica, Ploma', '2011-12-01 04:55:46', '2011-12-01 04:55:46', 31, 0.0, 0),
+(36, 'High Hill Embroidered', 250, NULL, 'Cuero y Bordado', 'Zapato Taco Negro con bordado de flores', '2013-03-30 15:55:57', '2013-03-30 15:55:57', 38, 0.0, 0),
+(37, 'My Dream', 350, NULL, '', 'Zapato Taco Negro con tiras de cuero', '2013-03-30 17:23:55', '2013-03-30 17:28:56', 38, 0.0, 0),
+(38, 'High Hill Fashion', 450, NULL, 'Cuero', 'Zapato Taco alto Negro con sujetador de cuero', '2013-03-30 17:26:30', '2013-03-30 17:26:30', 38, 0.0, 0);
 
 -- --------------------------------------------------------
 
@@ -324,7 +341,7 @@ CREATE TABLE IF NOT EXISTS `paises` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(80) DEFAULT NULL COMMENT 'Nombre de País',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=241 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=242 ;
 
 --
 -- Dumping data for table `paises`
@@ -589,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   `modified` datetime DEFAULT NULL COMMENT 'Fecha de la última modificación de la información',
   PRIMARY KEY (`id`),
   KEY `rating` (`model_id`,`model`,`rating`,`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `ratings`
@@ -608,7 +625,8 @@ INSERT INTO `ratings` (`id`, `user_id`, `model_id`, `model`, `rating`, `name`, `
 (13, '4eedacf6-6e70-499b-bdf0-01e0c0a80065', '31', 'Item', 2, 'default', '2011-12-18 21:06:08', '2011-12-18 21:06:08'),
 (14, '4eedacf6-6e70-499b-bdf0-01e0c0a80065', '22', 'Item', 3, 'default', '2011-12-20 15:25:31', '2011-12-20 15:25:31'),
 (15, '504b61a9-f8d0-4aa8-a7c7-30aa1faaa28f', '33', 'Item', 5, 'default', '2012-09-08 11:24:42', '2012-09-08 11:24:42'),
-(16, '505a5dc1-5930-4460-99b3-4663a8be1a77', '31', 'Item', 3, 'default', '2012-09-24 22:05:53', '2012-09-24 22:05:53');
+(16, '505a5dc1-5930-4460-99b3-4663a8be1a77', '31', 'Item', 3, 'default', '2012-09-24 22:05:53', '2012-09-24 22:05:53'),
+(17, '514f6cf3-3ff0-49c0-83f2-05dca8be1a77', '34', 'Item', 3, 'default', '2013-03-28 04:55:40', '2013-03-28 04:55:40');
 
 -- --------------------------------------------------------
 
@@ -621,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `subcategorias` (
   `nombre` varchar(150) DEFAULT NULL COMMENT 'Nombre de Subcategoría de Prenda',
   `categoria_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla categoria',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `subcategorias`
@@ -632,7 +650,6 @@ INSERT INTO `subcategorias` (`id`, `nombre`, `categoria_id`) VALUES
 (9, 'Pantalones Casuales', 7),
 (10, 'Pantalones Cortos', 7),
 (11, 'Tobilleras', 7),
-(12, 'Capris', 7),
 (13, 'Vestidos Formales', 8),
 (14, 'Vestidos Casuales', 8),
 (15, 'Tapados', 9),
@@ -656,7 +673,8 @@ INSERT INTO `subcategorias` (`id`, `nombre`, `categoria_id`) VALUES
 (33, 'Gafas', 15),
 (34, 'Cinturones', 15),
 (36, 'Bufandas', 15),
-(37, 'Bijuteria', 15);
+(37, 'Bijuteria', 15),
+(38, 'Tacones', 17);
 
 -- --------------------------------------------------------
 
@@ -677,14 +695,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nacimiento` date DEFAULT NULL COMMENT 'Fecha de Nacimiento',
   `tipo` varchar(100) DEFAULT NULL COMMENT 'Tipo de Usuario',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `emailverificado`, `created`, `modified`, `codigoverificacion`, `nacimiento`, `tipo`) VALUES
-(23, 'Dunia', 'Rivas', 'duniarivas@hotmail.com', 0, 0, '2013-03-03 21:46:49', '2013-03-03 22:03:06', NULL, '1995-03-03', '1'),
-(24, 'Diego', 'Landa', 'diegolanda@msn.com', 6, NULL, '2013-03-03 22:49:50', '2013-03-03 22:49:50', NULL, '1995-03-03', '1'),
+(30, 'Dunia', 'Rivas', 'dunia@hotmail.com', 6, 1, '2013-03-28 21:12:09', '2013-03-28 21:16:09', NULL, '1995-03-28', '0'),
+(29, 'Diego', 'Landa', 'diego@msn.com', 21, 1, '2013-03-28 19:35:38', '2013-03-30 15:47:17', NULL, '1995-03-28', '1'),
+(28, 'Diego', 'Landa', 'diegolanda@msn.com', 6, 0, '2013-03-24 21:26:07', '2013-03-24 21:35:24', NULL, '1995-03-24', '0'),
 (25, 'Diego', 'Landa', 'diegolanda1000@hotmail.com', 6, NULL, '2013-03-03 23:17:14', '2013-03-03 23:17:14', NULL, '1995-03-03', '1'),
 (27, 'admin', 'admin', 'admin@msn.com', 61791792, NULL, '2013-03-07 22:10:42', '2013-03-07 22:10:42', NULL, '1995-03-07', '1');

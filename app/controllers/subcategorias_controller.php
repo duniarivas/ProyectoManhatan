@@ -71,4 +71,3 @@ class SubcategoriasController extends  AppController {
 	
 }
 ?>
-	

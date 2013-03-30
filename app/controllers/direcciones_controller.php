@@ -81,7 +81,5 @@ class DireccionesController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
 }
-			
 ?>

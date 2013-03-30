@@ -19,6 +19,12 @@
 			<div id="headercontenido">
 				<?php echo $this->Html->image('logo.png',array('title'=>'Boutique Romane','alt'=>'Boutique Romane','width'=>'150px','height'=>'150px')) ?>
 			</div>
+                        <div id="flash">
+					<?php 
+						echo $this->Session->flash(); 
+						echo $this->Session->flash('auth'); 
+					?>
+			</div>
 		</div>
 		<div id="content">
 			<div id="contentcontenido">

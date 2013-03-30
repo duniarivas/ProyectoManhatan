@@ -22,11 +22,11 @@ class Imagene extends AppModel{
 		'Uploader.FileValidation' => array(
         'fileName' => array(
                        'maxWidth' => array(
-                               'value' => 250,
+                               'value' => 500,
                                'error' => 'Ancho Incorrecto'
                        ),
                        'maxHeight' => array(
-                               'value' => 300,
+                               'value' => 500,
                                'error' => 'Altura Incorrecta'
                        ),
                        'extension' => array(
@@ -34,7 +34,7 @@ class Imagene extends AppModel{
                                'error' => 'Extension Incorrecta',
                        ),
                        'filesize' => array(
-                               'value' => 5242880,
+                               'value' => 8242880,
                                'error' => 'Imagen Muy Pesada'
                        ),
                        'required' => array(

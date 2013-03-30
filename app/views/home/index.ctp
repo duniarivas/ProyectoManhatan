@@ -6,11 +6,15 @@
 	<div id = "carousel1"> 
 	<?php
 		foreach($carousel as $item){
-			echo $this->Html->image($item['Imagene']['url'], array(
+			echo $html->link($this->Html->image($item['Imagene']['url'], array(
 							'class'=>'cloudcarousel',
 							'alt'=>'Precio: '.$item['Item']['precio'].'Bs.',
 							'title'=>$item['Item']['nombre']
-								));
+							)
+                                                    ),
+                                         array('controller'=>'catalogos','action'=>'detalle',$item['Item']['id']),
+                                         array('escape'=>false)
+                                        );
 		}
 	?>
 	<!-- Define left and right buttons. -->
@@ -30,9 +34,12 @@
 		<?php
 			foreach($ultimos as $ultimo){
 				echo "<li>".
-					$this->Html->image($ultimo['Imagene']['url'],array('width'=>'75','height'=>'75',
-										'alt'=>$ultimo['Item']['nombre'],'title'=>$ultimo['Item']['nombre'])).
-						"</li>";
+					$html->link($this->Html->image($ultimo['Imagene']['url'],array('width'=>'75','height'=>'75',
+										'alt'=>$ultimo['Item']['nombre'],'title'=>$ultimo['Item']['nombre'])),
+                                                    array('controller'=>'catalogos','action'=>'detalle',$ultimo['Item']['id']),
+                                                    array('escape'=>false)
+                                                    )
+				    ."</li>";
 			}
 		?>
 	</ul>

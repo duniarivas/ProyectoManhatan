@@ -33,10 +33,7 @@
                         if(empty($direcciones)){
                                 echo "<b>Usted No Agrego Direcciones</b>";
                                 echo "<br>";
-                                echo "Desea ".
-                                                $html->link("Agregar Una Direccion",array('controller'=>'direcciones',
-                                                                                                                                        'action'=>'add')
-                                                                        );
+                                echo "Desea ".$html->link("Agregar Una Direccion",array('controller'=>'direcciones', 'action'=>'add') );
                         } else{
                                 foreach($direcciones as $direccion){
                                         echo "<small><b>Direccion 1:</b></small>   ".

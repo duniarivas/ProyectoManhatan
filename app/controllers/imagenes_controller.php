@@ -15,8 +15,8 @@ class ImagenesController extends  AppController {
 	
 	function add(){
 		if (!empty($this ->data) ){
-			$this-> Imagene ->create();
 			if ($this->Imagene->validates()) {
+                            $this-> Imagene ->create();
 				if ($this->Imagene->save($this->data)) {
 					$this->Session->setFlash('La Imagen a sido guardada');
 					$this->redirect( array('action' => 'index'), null, true);
@@ -71,6 +71,4 @@ class ImagenesController extends  AppController {
 	}
 	
 }
-
 ?>
-	

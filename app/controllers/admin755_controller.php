@@ -19,4 +19,3 @@ class Admin755Controller extends  AppController {
 
 }
 ?>
-	

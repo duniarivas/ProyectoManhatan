@@ -2,7 +2,7 @@
 class DeseosController extends  AppController {
 	var $name = 'Deseos';
 	var $layout = 'admin';
-	var $uses = array('Deseo', 'Subcategoria');
+	var $uses = array('Deseo', 'Subcategoria', 'Direccione');
 	
 	function add(){
 		if (!empty($this->data) ){
@@ -148,10 +148,10 @@ class DeseosController extends  AppController {
 			$this->redirect(array('action'=>'buscar'), null, true);
 		} else {
 			$deseos = $this->paginate('Deseo', array('Deseo.usuario_id'=>$id) );
-			$this->set('deseos',$deseos);
-										
+                        $direcciones=$this->Direccione->find('first', array('conditions' => array('Direccione.usuario_id' => $id)));
+                        $this->set('deseos',$deseos);
+			$this->set('direcciones',$direcciones);
 		}
 	}
-				
 }
 ?>

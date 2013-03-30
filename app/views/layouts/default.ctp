@@ -93,6 +93,7 @@
 				<div id="footercaja">
 					Ayuda
 					<ul>
+                                                <li>
 						<?php 
 							echo $html->link('PUF', array(
 												'controller'=>'home',
@@ -119,19 +120,19 @@
 					</ul>
 					<hr>
 					<?php
-						echo $html->link($html->image('facebook.png', array('class'=>'socialImage')),
+						echo $html->link($html->image('facebook.png', array('class'=>'socialImageLeft')),
 										'http://facebook.com/pages/Boutique/278333322203367',
 										array('escape'=>false,'target'=>'_BLANK'));
 						
-						echo $html->link($html->image('twitter.png'),
+						echo $html->link($html->image('twitter.png', array('class'=>'socialImageRight')),
 										'http://twitter.com/duniaboutique',
 										array('escape'=>false,'target'=>'_BLANK'));
 						
-						echo $html->link($html->image('tumblr.png'),
+						echo $html->link($html->image('tumblr.png', array('class'=>'socialImageLeft')),
 										'http://duniaboutique.tumblr.com',
 										array('escape'=>false,'target'=>'_BLANK'));
 						
-						echo $html->link($html->image('youtube.png'),
+						echo $html->link($html->image('youtube.png', array('class'=>'socialImageRight')),
 										'http://youtube.com/user/duniarivi',
 										array('escape'=>false,'target'=>'_BLANK'));
 					?>

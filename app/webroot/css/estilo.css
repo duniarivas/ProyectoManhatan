@@ -386,7 +386,7 @@ width: 230px; /*width of menu*/
 cursor:pointer;
 font: bold 13px Verdana;
 color: white;
-background: #606060 url(../img/arrowstop.gif) no-repeat 8px 6px; /*last 2 values are the x and y coordinates of bullet image*/
+background: #606060 url(../img/lista.png) no-repeat 8px 6px; /*last 2 values are the x and y coordinates of bullet image*/
 margin-bottom: 0; /*bottom spacing between header and rest of content*/
 text-transform: uppercase;
 padding: 7px 0 7px 31px; /*31px is left indentation of header text*/
@@ -572,12 +572,12 @@ form {
 	width: 95%;
 }
 fieldset {
+	margin-top: 10px;
 	border: 1px solid #ccc;
 	margin-bottom: 1em;
 	padding: 16px 20px;
 }
 fieldset legend {
-	background:#fff;
 	color: rgb(160,0,160);
 	text-shadow: rgb(225,225,225) 0px 1px 0px;
 	font-size: 160%;
@@ -919,11 +919,54 @@ div.code-coverage-results span.result-good {
 	margin: 15px 0px 0px 0px;	
 }
 
-.socialImage{
+.socialImageLeft{
 	z-index: 10;
+	transition: all 0.5s;
 }
-.socialImage:hover{
+.socialImageLeft:hover{
 	transition: all 0.5s;
 	display: inline-block;
 	transform:rotate(-30deg) scale(1.4);
+}
+.socialImageRight{
+	z-index: 10;
+	transition: all 0.5s;
+}
+.socialImageRight:hover{
+	transition: all 0.5s;
+	display: inline-block;
+	transform:rotate(30deg) scale(1.4);
+}
+.urbangreymenu li{
+	list-style-image: none;
+}
+li{
+	list-style-image: url('../img/lista.png');
+}
+li:hover{
+	transition: list-style 1s;
+}
+.cloudcarousel{
+	max-width: 200px;
+	max-height: 200px;
+}
+.jcarousel-skin-tango img{
+	transition: all 0.5s;
+}
+.jcarousel-skin-tango img:hover{
+	transition: all 0.5s;
+	-moz-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+}
+.gravatarCentro250{
+	width: 250px;
+	height: 250px;
+	margin: 10px auto 10px auto;
+	border: solid;
+	border-color: white;
+	border-width: 5px;
+	box-shadow: -5px 5px 4px rgb(100, 100, 100);
+	position: relative;
+	left:50%;
+	margin-left: -125px;
 }
