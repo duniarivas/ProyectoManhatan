@@ -42,20 +42,13 @@
 												array('action'=>'delete', $usuario['Usuario']['id']),
 												array('escape'=>false),
 												'Esta Seguro de Eliminar al Usuario?'); ?>
-					
-					<?php echo $html->image('view.png', array('alt'=>'Ver Compras', 
-										'title'=>'Ver Compras',
-										'url'=>array('controller'=>'compras',
-											'action'=>'index',
-											$usuario['Usuario']['id'])
-										)); ?>
 										
-					<?php echo $html->image('view.png', array('alt'=>'Ver Comentarios', 
+					<?php /*echo $html->image('view.png', array('alt'=>'Ver Comentarios', 
 										'title'=>'Ver Comentarios',
 										'url'=>array('controller'=>'comentarios',
 											'action'=>'index',
 											$usuario['Usuario']['id'])
-										)); ?>
+										)); */?>
 												
 						
 					</td>
@@ -64,7 +57,7 @@
 		</table>
 		<?php endif;?>
 	<hr>
-		<fieldset>
+	<fieldset>
 		<!-- Link Agregar -->
 		<?php echo $html->image('add.png',
 					array('alt'=>'Agregar Usuario','title'=>'Agregar Usuario',

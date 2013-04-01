@@ -19,19 +19,24 @@
 	<?php echo $this->element('menuUsuario'); ?>
 </div>
 <div id="lado-derecho">
+        <style>
+            .rate{
+                display: inline;
+            }
+            .rate div{
+                display: inline;
+            }
+        </style>
 		<?php
 			$i=0;
 			foreach($items as $item):
 				if($i==0){
 					echo "<h3 id='titulo'>".$item['Item']['nombre']."</h3>";
-					echo $this->element('rating', array('plugin' => 'rating',
-                                    'model' => 'Item',
-                                    'id' => $item['Item']['id']));
+					echo "<br><span class='rate'> Rating :".$this->element('rating', array('plugin' => 'rating', 'model' => 'Item', 'id' => $item['Item']['id']))."</span><hr><br>";
 					echo "<br>";
-					if($talla == null){
-						echo "Eliga Una Talla Para Comprar:<br>";
-					}
-					echo "Tallas: ";
+					//if($talla == null){
+						echo "<span>Selecciona Una Talla: </span>";
+					//}
 					foreach($caracteristicas as $caracteristica){
 						if($talla != $caracteristica['Caracteristica']['talla']) {
 							// Crear Link de Talla
@@ -85,7 +90,7 @@
 				
                                 ?>
 				<div class="magnify">
-                                    <div class="large"></div>
+                                <div class="large"></div>
 				<?php
                                     echo $html->image($item['Imagene']['url'],array('width'=>'150px','id'=>'prenda','class'=>'small'));
                                 ?>

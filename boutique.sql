@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2013 at 05:44 PM
+-- Generation Time: Mar 30, 2013 at 05:58 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -25,6 +25,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `caracteristicas`
 --
 
+DROP TABLE IF EXISTS `caracteristicas`;
 CREATE TABLE IF NOT EXISTS `caracteristicas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `talla` varchar(100) DEFAULT NULL COMMENT 'Tamaño de prenda',
@@ -100,6 +101,7 @@ INSERT INTO `caracteristicas` (`id`, `talla`, `color`, `stock`, `created`, `modi
 -- Table structure for table `categorias`
 --
 
+DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(150) DEFAULT NULL COMMENT 'Nombre de Categoría de Prenda',
@@ -129,6 +131,7 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 -- Table structure for table `comentarios`
 --
 
+DROP TABLE IF EXISTS `comentarios`;
 CREATE TABLE IF NOT EXISTS `comentarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `comentario` varchar(256) DEFAULT NULL COMMENT 'Comentario realizado por un usuario',
@@ -169,6 +172,7 @@ INSERT INTO `comentarios` (`id`, `comentario`, `created`, `usuario_id`, `item_id
 -- Table structure for table `deseos`
 --
 
+DROP TABLE IF EXISTS `deseos`;
 CREATE TABLE IF NOT EXISTS `deseos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `usuario_id` int(11) NOT NULL COMMENT 'Llave foránea de la tabla usuario',
@@ -205,6 +209,7 @@ INSERT INTO `deseos` (`id`, `usuario_id`, `item_id`, `talla`) VALUES
 -- Table structure for table `direcciones`
 --
 
+DROP TABLE IF EXISTS `direcciones`;
 CREATE TABLE IF NOT EXISTS `direcciones` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `direccion1` varchar(150) DEFAULT NULL COMMENT 'Primera Línea de Dirección',
@@ -233,6 +238,7 @@ INSERT INTO `direcciones` (`id`, `direccion1`, `direccion2`, `ciudad`, `telefono
 -- Table structure for table `imagenes`
 --
 
+DROP TABLE IF EXISTS `imagenes`;
 CREATE TABLE IF NOT EXISTS `imagenes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `url` varchar(1024) NOT NULL COMMENT 'URL de la imágen',
@@ -281,6 +287,7 @@ INSERT INTO `imagenes` (`id`, `url`, `item_id`) VALUES
 -- Table structure for table `items`
 --
 
+DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(250) NOT NULL COMMENT 'Nombre de Item (Artículo))',
@@ -337,6 +344,7 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `peso`, `material`, `descripcion`
 -- Table structure for table `paises`
 --
 
+DROP TABLE IF EXISTS `paises`;
 CREATE TABLE IF NOT EXISTS `paises` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(80) DEFAULT NULL COMMENT 'Nombre de País',
@@ -595,6 +603,7 @@ INSERT INTO `paises` (`id`, `nombre`) VALUES
 -- Table structure for table `ratings`
 --
 
+DROP TABLE IF EXISTS `ratings`;
 CREATE TABLE IF NOT EXISTS `ratings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `user_id` char(36) NOT NULL DEFAULT '' COMMENT 'Llave foránea de la tabla usuario',
@@ -634,6 +643,7 @@ INSERT INTO `ratings` (`id`, `user_id`, `model_id`, `model`, `rating`, `name`, `
 -- Table structure for table `subcategorias`
 --
 
+DROP TABLE IF EXISTS `subcategorias`;
 CREATE TABLE IF NOT EXISTS `subcategorias` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(150) DEFAULT NULL COMMENT 'Nombre de Subcategoría de Prenda',
@@ -682,6 +692,7 @@ INSERT INTO `subcategorias` (`id`, `nombre`, `categoria_id`) VALUES
 -- Table structure for table `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la tabla',
   `nombre` varchar(200) DEFAULT NULL COMMENT 'Nombre de Usuario',

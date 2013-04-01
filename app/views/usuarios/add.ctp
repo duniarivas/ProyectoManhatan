@@ -20,8 +20,13 @@
 	</fieldset>
 	
 	<?php echo $form->end('Agregar Usuario');?>
-	
-	
-	<?php echo $html->link('Listar Todos Los Usuarios', array('action'=>'index')); ?>
+    
+    <fieldset>
+		<!-- Link Listar -->
+		<?php echo $html->image('list.png',
+						array('alt'=>'Listar Usuario','title'=>'Listar Usuario',
+								'width'=>'16px', 'height'=>'16px',
+								'url'=>array('action'=>'index'))); ?>				
+    </fieldset>
 
 </div>

@@ -7,10 +7,8 @@
 		</legend>
 	
 		<?php
-			echo $form->input('titulo', array('label'=>'Titulo de Mensaje'));
-			echo $form->input('contenido',array('label'=>'Mensaje',
-												'type'=>'textarea'
-												)
+			echo $form->input('titulo', array('label'=>'Titulo de Mensaje','placeholder'=>'Titulo del email'));
+			echo $form->input('contenido',array('label'=>'Mensaje','type'=>'textarea' , 'rows'=>'20')
 						);
 		?>
 	</fieldset>

@@ -19,13 +19,16 @@
 					<?php echo $comentario['Comentario']['comentario'] ?>
 				</td>
 				<td>
-					<?php echo $comentario['Comentario']['created'] ?>
+					<?php
+                                            $fecha = new DateTime($comentario['Comentario']['created']);
+                                            echo $fecha->format('d/m/Y');
+                                        ?>
 				</td>
 				<td>
-				<?php echo $comentario['Comentario']['usuario_id'] ?>
+				<?php echo $comentario['Usuario']['nombre'] ?>
 				</td>
 				<td>
-				<?php echo $comentario['Comentario']['item_id'] ?>
+				<?php echo $comentario['Item']['nombre'] ?>
 				</td>
 				<td>
 				<?php echo $html->image('edit.png', array('alt'=>'Editar '.$comentario['Comentario']['comentario'], 'title'=>'Editar '.$comentario['Comentario']['comentario'],

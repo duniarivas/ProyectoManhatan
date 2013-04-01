@@ -9,7 +9,12 @@
 				echo $form->input('email');
 				echo $form->input('password');
 				echo $form->input('emailverificado');
-				echo $form->input('nacimiento');
+				echo $form->input('nacimiento',array('label'=>'Fecha de Nacimiento',
+											'dateFormat'=>'DMY',
+											'minYear' => date('Y')-70,
+											'maxYear' => date('Y')-18,
+											'monthNames'=>false
+										));
 				echo $form->input('tipo');
 			?>
 	</fieldset>

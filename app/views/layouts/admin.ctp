@@ -13,12 +13,28 @@
 
 		echo $scripts_for_layout;
 	?>
+        
+        <script type="text/javascript" src="/js/tiny_mce/tiny_mce.js"></script>
+
+        <script type="text/javascript">
+            tinyMCE.init({
+                    language: "es",
+                    mode : "textareas"
+            });
+        </script>
+
 </head>
 <body>
 	<div id="container">
 		<div id="header">
 			<div id="headercontenido">
 				<?php echo $this->Html->image('logo.png',array('title'=>'Boutique Romane','alt'=>'Boutique Romane','width'=>'150px','height'=>'150px')) ?>
+                                <div id="flash">
+					<?php 
+						echo $this->Session->flash(); 
+						echo $this->Session->flash('auth'); 
+					?>
+				</div>
 			</div>
 			<div id="gris">
 				<div id="menusuperior">
@@ -34,8 +50,6 @@
 		</div>
 		<div id="content">
 			<div id="contentcontenido">
-				<?php echo $this->Session->flash(); ?>
-	
 				<?php echo $content_for_layout; ?>
 			</div>
 		</div>
