@@ -13,8 +13,10 @@ class ItemsController extends  AppController {
 					'Item.id' => 'asc'
 					)
 		);
-	
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!empty($this->data) ){
 			$this->Item->create();
 			if ($this->Item->save($this->data) ){
@@ -26,8 +28,10 @@ class ItemsController extends  AppController {
 		}
 		$this->set('subcategorias', $this->Item->Subcategoria->find('list') );
 	}
-	
+
 	function index($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->set('items', $this->paginate('Item'));
 		} else {
@@ -35,8 +39,9 @@ class ItemsController extends  AppController {
 			$this->set('items', $this->paginate('Item', $condicion));
 		}
 	}
-	
+
 	function edit( $id = null ){
+            parent::soloAdministrador($this->Auth->user());
 	#debug($this->Item->find(array('Item.id'=>$id)));
 		if(!$id){
 			$this->Session->setFlash('Items invalido');
@@ -54,8 +59,10 @@ class ItemsController extends  AppController {
 			}
 		}
 	}
-	
+
 	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -68,6 +75,6 @@ class ItemsController extends  AppController {
 			$this->redirect(array('action'=>'index'), null, true);
 		}
 	}
-	
+
 }
 ?>

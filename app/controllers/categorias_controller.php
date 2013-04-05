@@ -13,8 +13,10 @@ class CategoriasController extends  AppController {
 					'Categoria.id'=>'asc'
 					)
 				);
-	
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!empty($this ->data) ){
 			$this-> Categoria ->create();
 			if ($this->Categoria->save($this->data)) {
@@ -27,9 +29,10 @@ class CategoriasController extends  AppController {
 	}
 
 	function index(){
+            parent::soloAdministrador($this->Auth->user());
 		$this->set('categorias', $this->paginate('Categoria'));
 	}
-	
+
 	function edit( $id=null ){
 		if(!$id){
 			$this->Session->setFlash('Categoria invalida');
@@ -46,10 +49,11 @@ class CategoriasController extends  AppController {
 			}
 		}
 	}
-	
-	
-		function delete($id = null){
-		
+
+
+    function delete($id = null){
+        parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -62,6 +66,6 @@ class CategoriasController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>

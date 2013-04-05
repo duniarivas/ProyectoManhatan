@@ -12,8 +12,10 @@ class ImagenesController extends  AppController {
 		'order'=>array('Imagene.id'=>'asc')
 	);
 	var $components = array('Uploader.Uploader');
-	
+
 	function add(){
+            $this->soloAdministrador($this->Auth->user());
+
 		if (!empty($this ->data) ){
 			if ($this->Imagene->validates()) {
                             $this-> Imagene ->create();
@@ -29,6 +31,8 @@ class ImagenesController extends  AppController {
 	}
 
 	function index($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->set('imagenes', $this->paginate('Imagene'));
 		} else {
@@ -36,27 +40,32 @@ class ImagenesController extends  AppController {
 			$this->set('imagenes', $this->paginate('Imagene', $condicion));
 		}
 	}
-	
+
 	function edit( $id = null ){
+            parent::soloAdministrador($this->Auth->user());
 	#debug($this->Item->find(array('Item.id'=>$id)));
 		if(!$id){
-			$this->Session->setFlash('Caracteristica invalido');
+			$this->Session->setFlash('ID invalido');
 			$this->redirect(array('action'=>'index'),null, true);
 		}
 		if(empty($this->data)){
-			$this->data=$this->Caracteristica->find(array('Caracteristica.id'=>$id));
+			$this->data = $this->Imagene->find(array('Imagene.id'=>$id));
+                        $this->set('items', $this->Imagene->Item->find('list'));
+                        $this->set('data',$this->data);
 		} else {
 			if($this->Caracteristica->save($this->data)){
-				$this->Session->setFlash('La caracteristica ha sido guardado');
+				$this->Session->setFlash('La imagen ha sido guardado');
 				$this->redirect(array('action'=>'index', null, true));
 			} else {
-				$this->Session->setFlash('La Caracteristica no ha podido ser guardado. Intentalo de nuevo.');
+				$this->Session->setFlash('La Imagen no ha podido ser guardado. Intentalo de nuevo.');
 			}
 		}
 	}
-	
-	
+
+
 	function delete($id = null){
+            $this->soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -69,6 +78,6 @@ class ImagenesController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>

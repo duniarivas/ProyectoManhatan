@@ -44,11 +44,6 @@
 		</table>
 	<?php endif;?>
 	
-<fieldset>
-		<!-- Link Agregar -->
-		<?php echo $html->image('add.png',
-					array('alt'=>'Agregar Comentario','title'=>'Agregar Comentario',
-						'width'=>'16px', 'height'=>'16px',
-						'url'=>array('action'=>'add'))); ?>
+
 	
 </div>

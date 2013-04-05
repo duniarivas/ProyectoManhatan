@@ -20,6 +20,16 @@
 	</fieldset>
 	<?php echo $form->end('Guardar');?>
 	
-	<?php echo $html->link('Listar todos los usuario', array('action'=>'index')); ?><br />
-	<?php echo $html->link('Agregar Nuevo usuario', array('action'=>'add')); ?>
+    <fieldset>
+		<!-- Link Listar -->
+        <?php echo $html->image('add.png',
+					array('alt'=>'Agregar Item','title'=>'Agregar Usuario',
+						'width'=>'16px', 'height'=>'16px',
+						'url'=>array('action'=>'add'))); ?>
+                        
+		<?php echo $html->image('list.png',
+						array('alt'=>'Listar Usuario','title'=>'Listar Usuario',
+								'width'=>'16px', 'height'=>'16px',
+								'url'=>array('action'=>'index'))); ?>				
+    </fieldset>
 </div>

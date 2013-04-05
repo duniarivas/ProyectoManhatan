@@ -1,17 +1,32 @@
 <div id="page">
-	<?php echo $form->create('Caracteristica');?>
+	<?php echo $form->create('Imagene', array('type'=>'file')); ?>
 	<fieldset>
-		<legend>Edita Caracteristica</legend>
-			<?php
-				echo $form->hidden('Caracteristica.id');
-				echo $form->input('talla');
-				echo $form->input('color');
-				echo $form->input('stock');
-				echo $form->input('item_id');
-			?>
+                <fieldset>
+                    <legend>Imagen Cargado</legend>
+                    <?php
+                        echo "Url: ".$data['Imagene']['url']."<br/>";
+                        echo $html->image($data['Imagene']['url'], array('alt'=>'Editar ', 'title'=>'Editar','width'=>'150px','height'=>'150px'));
+                    ?>
+                </fieldset>
+		<legend>Edita Imagen</legend>
+		    <?php
+			echo $form->hidden('Imagene.id');
+			echo $form->input('fileName', array('label'=>'Imagen:', 'type'=>'file'));
+			echo $form->input('item_id');
+                    ?>
 	</fieldset>
 	<?php echo $form->end('Guardar');?>
-	
-	<?php echo $html->link('Listar todas las Caracteristicas', array('action'=>'index')); ?><br />
-	<?php echo $html->link('Agregar Nueva Caracteristicas', array('action'=>'add')); ?>
+
+         <fieldset>
+		<!-- Link Listar -->
+            <?php echo $html->image('add.png',
+					array('alt'=>'Agregar Imagenes','title'=>'Agregar Imagenes',
+						'width'=>'16px', 'height'=>'16px',
+						'url'=>array('action'=>'add'))); ?>
+
+		<?php echo $html->image('list.png',
+						array('alt'=>'Listar Imagenes','title'=>'Listar Imagenes',
+								'width'=>'16px', 'height'=>'16px',
+								'url'=>array('action'=>'index'))); ?>
+        </fieldset>
 </div>

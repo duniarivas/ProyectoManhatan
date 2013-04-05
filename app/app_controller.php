@@ -33,8 +33,8 @@
  * @link http://book.cakephp.org/view/957/The-App-Controller
  */
 class AppController extends Controller {
-	var $components = array('Auth','Session');
- 	
+	var $components = array('Auth','Session','RequestHandler');
+
 	/**
 	 *	Metodo para revisar si un usuario logueado
 	 * 	es Un Administrador.
@@ -42,20 +42,29 @@ class AppController extends Controller {
 	 *	y se lo desloguea. Y se lo envia a la interfaz de home para usuarios
 	 */
 	function soloAdministrador($datosUsuario){
-		if($datosUsuario['Usuario']['tipo']==1){	// Si Es Un Usuario Normal: 0->admin;1->usuario
-			$this->Auth->logout();
-			$this->redirect(array(
-								'controller'=>'home',
-								'action'=>'index'
-							)
-					);
+                if (!isset($datosUsuario['Usuario']['tipo']))
+                   $this->redirect(array('controller' => 'admin755', 'action' => 'index'));
+
+                if( $datosUsuario['Usuario']['tipo'] == 1 ){	// Si Es Un Usuario Normal: 0->admin; 1->usuario
+		    $this->redirect(array( 'controller'=>'home', 'action'=>'index' ) );
 		}
+                //$this->Auth->logout();
 	}
-	
+
+        function __url() {
+            $port = env('SERVER_PORT') == 80 ? '' : ':'.env('SERVER_PORT');
+            return env('SERVER_NAME').$port.env('REQUEST_URI');
+        }
+
 	/**
 	 *	Configuracion de la Autorizacion de usuarios
 	 */
 	function beforeFilter() {
+            //if(!$this->RequestHandler->isSSL()) {
+            //    $this->redirect('https://'.$this->__url());
+            //}
+
+
 		$this->Auth->userModel = 'Usuario';
   		$this->Auth->fields = array('username' => 'email', 'password' => 'password');
 		$this->Auth->loginError = "Lo siento, El email o password son incorrectos.";
@@ -65,5 +74,6 @@ class AppController extends Controller {
 			$this->Auth->logoutRedirect = array('controller' => 'home', 'action' => 'index');
 		$this->Auth->allow();
 		$this->set('user', $this->Auth->user());
+
 	}
 }

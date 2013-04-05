@@ -2,6 +2,8 @@
     .magnify{
         width:150px;
         position: relative;
+        margin-left:-75px;
+        left: 50%;
     }
     .large {
 	width: 180px; height: 180px;
@@ -28,74 +30,89 @@
             }
         </style>
 		<?php
+                    // Iniciar Variables
+                    
+                    $codigo = null;
+		    $nombre = null;
+		    $tamano = null;
+                    $precio = null;
+                    $usuario_id = null;
+                    //////
 			$i=0;
 			foreach($items as $item):
 				if($i==0){
 					echo "<h3 id='titulo'>".$item['Item']['nombre']."</h3>";
 					echo "<br><span class='rate'> Rating :".$this->element('rating', array('plugin' => 'rating', 'model' => 'Item', 'id' => $item['Item']['id']))."</span><hr><br>";
 					echo "<br>";
-					//if($talla == null){
-						echo "<span>Selecciona Una Talla: </span>";
-					//}
-					foreach($caracteristicas as $caracteristica){
-						if($talla != $caracteristica['Caracteristica']['talla']) {
-							// Crear Link de Talla
-							echo "<div style='display:inline;'>";
-							echo " ".$html->link($caracteristica['Caracteristica']['talla'],array(
-											'controller'=>'catalogos',
-											'action'=>'detalle',
-											$item['Item']['id'],
-											$caracteristica['Caracteristica']['talla'],
-											)
-									);
-							echo "</div>";
-						} else {
-							// Seleccionar Talla
-							echo "<div style='color:#FF0000; display:inline; font-weight:bold;'>";
-							echo " ".$caracteristica['Caracteristica']['talla'];
-							echo "</div>";
-							
-							// Crear Boton PayPal
-							echo "<div id='paypalbox'>";
-									$codigo	= "Item#".$item['Item']['id'];
-									$nombre = " ".$item['Item']['nombre']." ";
-									$tamano = " Talla: ".$talla;
-									$precio = $item['Item']['precio'];
-									echo $paypal->button('Ver Carrito', array('test'=>true,
-															'type'=>'viewcart')); 
-									echo $paypal->button('Agregar A Carrito', array('test'=>true,
-															'type'=>'addtocart', 'amount' => $precio, 
-															'item_name' => $codigo.$nombre.$tamano)); 
-									echo $paypal->button('Compra Directa', array('test'=>true,
-															'amount' => $precio, 
-															'item_name' => $codigo.$nombre.$tamano)); 
-								if( $user==null){
-									echo "Debe ";
-									echo $this->Html->link('Registrarse','/usuarios/registro');
-									echo " o "; 
-									echo $this->Html->link('Iniciar Sesion','/usuarios/login');
-									echo " Para Agregar Este Item A Su Cajita de Deseos";
-								} else {
-									echo $form->create('Deseo', array('action'=>'add'));
-									echo $form->input('usuario_id',array('type'=>'hidden','value'=>$user['Usuario']['id']));
-									echo $form->input('item_id',array('type'=>'hidden','value'=>$idItem));
-									echo $form->input('talla',array('type'=>'hidden','value'=>$talla));
-									echo $form->end('Lo Deseo!');
-								}
-							echo "</div>";
-						}
-					}
-					echo "<hr><br>";
+                                        ?>
+                                        <div id="detalle">
+                                            <div id='item'>
+                                                <div class="magnify">
+                                                <div class="large"></div>
+                                                <?php
+                                                    echo $html->image($item['Imagene']['url'],array('width'=>'150px','height'=>'150px','id'=>'prenda','class'=>'small'));
+                                                ?>
+                                                </div>
+                                                <?php
+                                                
+                                                echo "<br><span style='font-weight:lighter;'>Elige Una Talla: ";
+                                                
+                                                foreach($caracteristicas as $caracteristica){
+                                                        if($talla != $caracteristica['Caracteristica']['talla']) {
+                                                                // Crear Link de Talla
+                                                                //echo "<div style='display:inline;'>";
+                                                                echo " ".$html->link($caracteristica['Caracteristica']['talla'],array(
+                                                                                                'controller'=>'catalogos',
+                                                                                                'action'=>'detalle',
+                                                                                                $item['Item']['id'],
+                                                                                                $caracteristica['Caracteristica']['talla'],
+                                                                                                )
+                                                                                );
+                                                                //echo "</div>";
+                                                        } else {
+                                                                // Seleccionar Talla
+                                                                echo "<span style='color:rgb(180,0,180);'>";
+                                                                echo " ".$caracteristica['Caracteristica']['talla'];
+                                                                echo "</span>";
+                                                                $codigo	= "Item#".$item['Item']['id'];
+                                                                $nombre = " ".$item['Item']['nombre']." ";
+                                                                $tamano = " Talla: ".$talla;
+                                                                $precio = $item['Item']['precio'];
+                                                                $usuario_id = $user['Usuario']['id'];
+                                                        }
+                                                }
+                                                
+                                                echo "</span>";
+                                            echo "</div>";// FIN ITEM
+                                            if ($codigo != null){
+                                                // Crear Boton PayPal
+                                                            echo "<div id='paypalbox'>";
+                                                                            
+                                                                            echo $paypal->button('Ver Carrito', array('test'=>true,
+                                                                                                                            'type'=>'viewcart')); 
+                                                                            echo $paypal->button('Agregar A Carrito', array('test'=>true,
+                                                                                                                            'type'=>'addtocart', 'amount' => $precio, 
+                                                                                                                            'item_name' => $codigo.$nombre.$tamano)); 
+                                                                            echo $paypal->button('Compra Directa', array('test'=>true,
+                                                                                                                            'amount' => $precio, 
+                                                                                                                            'item_name' => $codigo.$nombre.$tamano)); 
+                                                                    if( $user==null){
+                                                                            echo "Debe ";
+                                                                            echo $this->Html->link('Registrarse','/usuarios/registro');
+                                                                            echo " o "; 
+                                                                            echo $this->Html->link('Iniciar Sesion','/usuarios/login');
+                                                                            echo " Para Agregar Este Item A Su Cajita de Deseos";
+                                                                    } else {
+                                                                            echo $form->create('Deseo', array('action'=>'add'));
+                                                                            echo $form->input('usuario_id',array('type'=>'hidden','value'=>$usuario_id));
+                                                                            echo $form->input('item_id',array('type'=>'hidden','value'=>$idItem));
+                                                                            echo $form->input('talla',array('type'=>'hidden','value'=>$talla));
+                                                                            echo $form->end('Lo Deseo!');
+                                                                    }
+                                                            echo "</div>";
+                                            }
+                                        echo "</div>";//Fin Detalle
 				}
-				
-                                ?>
-				<div class="magnify">
-                                <div class="large"></div>
-				<?php
-                                    echo $html->image($item['Imagene']['url'],array('width'=>'150px','id'=>'prenda','class'=>'small'));
-                                ?>
-                                </div>
-                                <?php
 				
 				if($i==0){
 					echo "<br><br> Descripcion:<hr><br>";

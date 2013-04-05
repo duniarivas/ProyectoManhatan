@@ -1,4 +1,5 @@
 <div style="width:450px;margin:10px auto;">
+        
 	<fieldset>
 		<legend style="background-color:transparent;">Llene Sus Datos de Administrador</legend>
 		

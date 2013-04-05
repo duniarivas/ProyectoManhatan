@@ -12,7 +12,9 @@
     <figure id="Gravatar">
         <img id="GravatarPerfil" src="<?php echo $grav_url; ?>" alt="Foto de Perfil">
         <figcaption>
-            <img src="http://1.bp.blogspot.com/-iHkoGg00jus/USWYsQdtZzI/AAAAAAAACuc/9Bjb2logLTw/s1600/Gravatar+icon.png" width="50" height="50"/>Gravatar.com
+            <a href="http://gravatar.com" target="_blank">
+            	<img src="http://1.bp.blogspot.com/-iHkoGg00jus/USWYsQdtZzI/AAAAAAAACuc/9Bjb2logLTw/s1600/Gravatar+icon.png" width="30" height="30"/>Gravatar.com
+            </a>
         </figcaption>    
     </figure>
     <div id="DatosPerfil">
@@ -64,7 +66,3 @@
                 ?>
     </div>
 </section>
-<div class="CajaDeDeseos">
-    <hr/>
-    Caja de Deseos
-</div>

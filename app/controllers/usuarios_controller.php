@@ -4,19 +4,22 @@ class UsuariosController extends  AppController {
 	var $layout = 'admin';
 	var $components = array('Email','Auth','Administrador');
 	var $uses= array('Usuario','Direccione');
-	
+
 	function login() {
             $this->layout = 'login';
+            $this->set('usuario', true);
 	}
- 
+
 	function logout() {
 		$this->redirect($this->Auth->logout());
 	}
-	
+
 	/**
 	 *	Metodo Administrador
 	 */
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+
 		$this->soloAdministrador($this->Auth->user());
 		$this->layout='admin';
 		if (!empty($this->data) ){
@@ -29,27 +32,27 @@ class UsuariosController extends  AppController {
 			}
 		}
 	}
-	
+
 	function registro(){
 		$this->layout = 'default';
-                
+
 		if (!empty($this->data) ){
-                    
+
 			//$this->Usuario->create();
 			if ($this->data['Usuario']['password'] ==
 				$this->Auth->password($this->data['Usuario']['passwordConfirm'])) {
-				
+
 				$this->Usuario->create();
-			
+
 				if ($this->Usuario->save($this->data) ){
-					
+
 					// Passwords match, continue processing
 					$this->Session->setFlash('Usted fue registrado exitosamente.');
 					$this->redirect( array('controller'=>'home','action'=>'index'), null, true );
 				} else {
 					$this->Session->setFlash('Usted no pudo registrarse. Intente Nuevamente.');
 				}
-				
+
 			} else {
 				$this->Session->setFlash('Los Passwords No Coinciden.');
 			}
@@ -72,26 +75,26 @@ class UsuariosController extends  AppController {
 			$this->redirect(array('action'=>'login'),null, true);
 		}
 	}
-	
+
 	function password(){
 		$this->layout = 'default';
-		
+
 		if (!empty($this->data)) {
-				
+
 			if ($this->data['Usuario']['password'] ==
 				$this->Auth->password($this->data['Usuario']['passwordConfirm'])) {
-				
+
 				if ($this->Usuario->save($this->data)) {
 					$this->Session->setFlash('Password ha Sido Cambiado.');
 					$this->redirect(array('action'=>'perfil',$this->data['Usuario']['id']),null, true);
 				} else {
 					$this->Session->setFlash('Password no pudo ser Cambiado.');
 				}
-				
+
 			} else {
 				$this->Session->setFlash('Los Passwords No Coinciden.');
 			}
-				
+
 		} else {
 			$this->data = $this->Usuario->findById($this->Auth->user('id'));
 		}
@@ -101,13 +104,15 @@ class UsuariosController extends  AppController {
 	 *	Metodo Administrador
 	 */
 	function index(){
-		$this->layout='admin';		
+            parent::soloAdministrador($this->Auth->user());
+
+		$this->layout='admin';
 		$this->set('usuarios', $this->Usuario->find('all'));
 	}
-	
+
 	function edit( $id=null ){
-		$this->soloAdministrador($this->Auth->user());
-		
+	    parent::soloAdministrador($this->Auth->user());
+
 		if(!$id){
 			$this->Session->setFlash('Usuario invalido');
 			$this->redirect(array('action'=>'index'),null, true);
@@ -123,11 +128,13 @@ class UsuariosController extends  AppController {
 			}
 		}
 	}
-	
+
 	/**
 	 *	Metodo Administrador
 	 */
 	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		$this->layout='admin';
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
@@ -141,37 +148,39 @@ class UsuariosController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 	/**
 	 *	Metodo Administrador
 	 */
 	function email(){
+            parent::soloAdministrador($this->Auth->user());
+
 		$this->layout='admin';
 		if (!empty($this->data) ){
 			$usuarios = $this->Usuario->find('all');
-			
+
 			foreach($usuarios as $usuario) {
 				//$User = $this->Usuario->read(null,2);
-				
+
 				$this->Email->to = $usuario['Usuario']['email'];				// A Quien Enviamos
-				$this->Email->bcc = array('copia@boutique.com');				// Con Copia
-				$this->Email->subject = $this->data['Usuario']['titulo'];		// Titulo de Email	
+				$this->Email->bcc = array('drivas@boutique.kudosideas.com');				// Con Copia
+				$this->Email->subject = $this->data['Usuario']['titulo'];		// Titulo de Email
 				$this->Email->replyTo = 'soporte@boutique.com';					// Respuesta A:
-				$this->Email->from = 'Boutique <no_respuesta@boutique.com>';	// De Que Email
+				$this->Email->from = 'Boutique <no_respuesta@boutique.kudosideas.com>';	// De Que Email
 				$this->Email->template = 'default'; 							// Que Plantilla
 				$this->Email->sendAs = 'both'; 									// Envio como texto o HTML o Ambos
-				
+
 				//Set view variables as normal
 				$this->set('nombre', $usuario['Usuario']['nombre']);
 				$this->set('apellido', $usuario['Usuario']['apellido']);
 				$this->set('mensaje', $this->data['Usuario']['contenido']);
-				
+
 				$this->Email->send();
-			}	
-			
-			$this->Session->setFlash('Se Envio El Email.');	
-		} 
+			}
+
+			$this->Session->setFlash('Se Envio El Email.');
+		}
 	}
-	
+
 }
 ?>

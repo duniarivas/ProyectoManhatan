@@ -3,7 +3,7 @@ class PaisesController extends  AppController {
 	var $name = 'Paises';
 	var $layout = 'admin';
 	var $helpers  = array(
-              'Html', 
+              'Html',
               'Session',
               'Paginator'
               );
@@ -12,9 +12,11 @@ class PaisesController extends  AppController {
               'order' => array(
                 'Paise.id' => 'asc'
                 )
-              );                
-	
+              );
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!empty($this->data) ){
 			$this->Paise->create();
 			if ($this->Paise->save($this->data) ){
@@ -25,12 +27,16 @@ class PaisesController extends  AppController {
 			}
 		}
 	}
-	
+
 	function index(){
+            parent::soloAdministrador($this->Auth->user());
+
 		$this->set('paises', $this->paginate('Paise'));
 	}
-	
+
 	function edit( $id=null ){
+            parent::soloAdministrador($this->Auth->user());
+
 		if(!$id){
 			$this->Session->setFlash('Pais invalido');
 			$this->redirect(array('action'=>'index'),null, true);
@@ -46,8 +52,10 @@ class PaisesController extends  AppController {
 			}
 		}
 	}
-	
-	function delete($id = null){	
+
+	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -60,6 +68,6 @@ class PaisesController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>

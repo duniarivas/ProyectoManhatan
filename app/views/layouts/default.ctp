@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -29,9 +29,9 @@
 		<div id="header">
 			<div id="headercontenido">
 				<div id="comandos">
+                    <div id="comandosContenido">
 					<?php 
 						if( $user==null){
-							echo "<br>";
 							echo $this->Html->link('registrarse','/usuarios/registro');
 				 			echo " o "; 
 							echo $this->Html->link('iniciar sesion','/usuarios/login');
@@ -43,9 +43,11 @@
 									$this->Html->link('salir','/usuarios/logout');
 						}
 					?>
+                      </div>
 				</div>
 				<?php echo $this->Html->image('logo.png',array('title'=>'Boutique Romane','alt'=>'Boutique Romane','width'=>'150px','height'=>'150px')) ?>
-				<div id="flash">
+                
+                 <div id="flash">
 					<?php 
 						echo $this->Session->flash(); 
 						echo $this->Session->flash('auth'); 

@@ -1,4 +1,4 @@
-<h2>Aceca de Nostros</h2>
+<h2>Acerca de Nostros</h2>
 
 <b>La filosof&iacute;a de nuestro negocio</b>
 

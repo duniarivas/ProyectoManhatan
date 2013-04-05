@@ -3,7 +3,7 @@ class SubcategoriasController extends  AppController {
 	var $name = 'Subcategorias';
 	var $layout = 'admin';
 	var $helpers  = array(
-              'Html', 
+              'Html',
               'Session',
               'Paginator'
               );
@@ -12,9 +12,11 @@ class SubcategoriasController extends  AppController {
               'order' => array(
                 'Subcategoria.id' => 'asc'
                 )
-              ); 
-	
+              );
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!empty($this->data) ){
 			$this->Subcategoria->create();
 			if ($this->Subcategoria->save($this->data) ){
@@ -26,8 +28,10 @@ class SubcategoriasController extends  AppController {
 		}
 		$this->set('categorias',$this->Subcategoria->Categoria->find('list'));
 	}
-	
+
 	function index($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->set('subcategorias', $this->paginate('Subcategoria'));
 		} else {
@@ -35,8 +39,10 @@ class SubcategoriasController extends  AppController {
 			$this->set('subcategorias', $this->paginate('Subcategoria', $condicion));
 		}
 	}
-	
+
 	function edit( $id=null ){
+            parent::soloAdministrador($this->Auth->user());
+
 		if(!$id){
 			$this->Session->setFlash('Subcategoria invalida');
 			$this->redirect(array('action'=>'index'),null, true);
@@ -53,9 +59,11 @@ class SubcategoriasController extends  AppController {
 			}
 		}
 	}
-	
-	
-	function delete($id = null){	
+
+
+	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -68,6 +76,6 @@ class SubcategoriasController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>

@@ -3,8 +3,10 @@ class DeseosController extends  AppController {
 	var $name = 'Deseos';
 	var $layout = 'admin';
 	var $uses = array('Deseo', 'Subcategoria', 'Direccione');
-	
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!empty($this->data) ){
 			$filas = $this->Deseo->find('all',array('conditions'=>array(
 														'Deseo.usuario_id'=>$this->data['Deseo']['usuario_id'],
@@ -16,7 +18,7 @@ class DeseosController extends  AppController {
 			foreach($filas as $fila){
 				$existe = true;
 			}
-			
+
 			if(!$existe){
 				$this->Deseo->create();
 				if ($this->Deseo->save($this->data) ){
@@ -41,12 +43,16 @@ class DeseosController extends  AppController {
 			}
 		}
 	}
-	
+
 	function index(){
+            parent::soloAdministrador($this->Auth->user());
+
 		$this->set('deseos', $this->Deseo->find('all'));
 	}
-	
+
 	function edit( $id=null ){
+            parent::soloAdministrador($this->Auth->user());
+
 		if(!$id){
 			$this->Session->setFlash('Deseo invalido');
 			$this->redirect(array('action'=>'index'),null, true);
@@ -65,6 +71,8 @@ class DeseosController extends  AppController {
 
 
 	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'deseos'), null, true);
@@ -77,7 +85,7 @@ class DeseosController extends  AppController {
 			$this->redirect(array('action'=>'deseo'), null, true);
 		}
 	}
-	
+
 	function deseo(){
 		// Para Generar Menu, Buscamos Subcategorias
 		$subcategorias=$this->Subcategoria->find('all',array('order'=>'Subcategoria.categoria_id ASC'));
@@ -86,21 +94,21 @@ class DeseosController extends  AppController {
 		$this->layout='default';
 		if($this->Auth->user()){
 			$usuario = $this->Auth->user();
-			
+
 			$this->paginate = array(
 								 'order' => array(
 								'Item.nombre' => 'asc'
 								),
 								'limit' => 4
 							);
-							
+
 			$deseos = $this->paginate('Deseo', array('Deseo.usuario_id'=>$usuario['Usuario']['id']));
 			$this->set('deseos',$deseos);
 		} else {
 			$this->Session->setFlash('Debe iniciar Sesion.');
 		}
 	}
-	
+
 	function buscar(){
 		// Para Generar Menu, Buscamos Subcategorias
 		$subcategorias=$this->Subcategoria->find('all',array('order'=>'Subcategoria.categoria_id ASC'));
@@ -129,21 +137,21 @@ class DeseosController extends  AppController {
 			$this->set('perfiles',$perfiles);
 		}
 	}
-	
+
 	function perfil($id = null){
 		// Para Generar Menu, Buscamos Subcategorias
 		$subcategorias=$this->Subcategoria->find('all',array('order'=>'Subcategoria.categoria_id ASC'));
 		$this->set('subcategorias',$subcategorias);
 		//////////
 		$this->layout='default';
-		
+
 		$this->paginate = array(
 								 'order' => array(
 								'Item.nombre' => 'asc'
 								),
 								'limit' => 4
 							);
-		
+
 		if($id == null){
 			$this->redirect(array('action'=>'buscar'), null, true);
 		} else {

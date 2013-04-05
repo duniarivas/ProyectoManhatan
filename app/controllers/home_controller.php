@@ -2,19 +2,19 @@
 class HomeController extends  AppController {
 	var $name = 'Home';
 	var $uses = array('Item','Imagene','Subcategoria');
-	
+
 	function beforeFilter() {
 		$this -> Session -> write('admin.valor', '0');
   		$this->Auth->allow('index');
   		parent::beforeFilter();
  	}
-	
+
 	function index(){
-		if($this->Auth->user()){
-			if($this->Auth->user('tipo')==0){
-				$this->redirect(array('controller'=>'admin755','action'=>'home'), null, true);
-			}
-		}
+	    $datosUsuario = $this->Auth->user();
+            if (isset($datosUsuario['Usuario']['tipo']) && $datosUsuario['Usuario']['tipo']==0 )
+                    $this->redirect(array('controller' => 'admin755', 'action' => 'home'));
+
+
 		// Para Generar Menu, Buscamos Subcategorias
 		$subcategorias=$this->Subcategoria->find('all',array('order'=>'Subcategoria.categoria_id ASC'));
 		$this->set('subcategorias',$subcategorias);
@@ -30,17 +30,17 @@ class HomeController extends  AppController {
 												)
 				);
 	}
-	
+
 	function acercaDe(){
-	
+
 	}
-	
+
 	function puf(){
-	
+
 	}
-	
+
 	function ubicacion(){
-	
+
 	}
 }
 ?>

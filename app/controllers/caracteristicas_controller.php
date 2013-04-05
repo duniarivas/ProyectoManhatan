@@ -4,33 +4,36 @@ class CaracteristicasController extends  AppController {
 	var $layout = 'admin';
 	var $paginate = array(
 				'order' => array(
-							'caracteristica.id' => 'asc'
+							'Caracteristica.id' => 'asc'
 						),
 				'limit'=>10
               );
-			  
+
 	function add($idItem = null){
+            parent::soloAdministrador($this->Auth->user());
+
             if($idItem == null){
 		    $this->set('items', $this->Caracteristica->Item->find('list'));
 	    } else {
-		$this->set('items', $this->Caracteristica->Item->find('list',array('conditions'=>array('Item.id'=>$idItem) ) )
-			);
+			$this->set('items', $this->Caracteristica->Item->find('list',array('conditions'=>array('Item.id'=>$idItem) ) ));
 	    }
-                
+
 	    if (empty($this ->data) )
                 return;
-	    
-            $this-> Caracteristica ->create();
-            if ($this->Caracteristica->save($this->data)) {
-		$this->Session->setFlash('La caracteristica a sido guardada');
-		$this->redirect( array('action' => 'index',$this->data['Caracteristica']['item_id']), null, true);
+
+        $this-> Caracteristica ->create();
+        if ($this->Caracteristica->save($this->data)) {
+			$this->Session->setFlash('La caracteristica a sido guardada');
+			$this->redirect( array('action' => 'index',$this->data['Caracteristica']['item_id']), null, true);
 	    } else {
-		$this->Session->setFlash('La tarea no fue guardada');
+			$this->Session->setFlash('La tarea no fue guardada');
 	    }
 	}
 
 	function index($id = null){
-		if (!$id){
+            parent::soloAdministrador($this->Auth->user());
+
+                if (!$id){
 			$this->set('caracteristicas', $this->paginate('Caracteristica'));
 		} else {
 			$this->set('caracteristicas', $this->paginate('Caracteristica', array('Item.id'=>$id)
@@ -39,8 +42,9 @@ class CaracteristicasController extends  AppController {
 		}
 		$this->set('idItem',$id);
 	}
-	
+
 	function edit( $id = null ){
+            parent::soloAdministrador($this->Auth->user());
 	#debug($this->Item->find(array('Item.id'=>$id)));
 		if(!$id){
 			$this->Session->setFlash('Caracteristica invalido');
@@ -58,9 +62,11 @@ class CaracteristicasController extends  AppController {
 			}
 		}
 	}
-	
-	
-	function delete($id = null){	
+
+
+	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -73,6 +79,6 @@ class CaracteristicasController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>

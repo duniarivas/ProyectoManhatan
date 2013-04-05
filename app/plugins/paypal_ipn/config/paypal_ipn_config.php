@@ -28,7 +28,8 @@ class PaypalIpnConfig {
  * Test settings to test with using a sandbox paypal account.
  */
 	  var $test = array(
-		'business'      => 'duniar_1322423346_biz@hotmail.com',         // 'live_email@paypal.com', //Your Paypal email account
+		//'business'      => 'duniar_1322423346_biz@hotmail.com',         // 'live_email@paypal.com', //Your Paypal email account
+                'business'      => 'duniarivas-facilitator@hotmail.com',         // 'live_email@paypal.com', //Your Paypal email account
 		'server'        => 'https://www.sandbox.paypal.com',        // Main paypal server.
 		'notify_url'    => 'http://test.yoursite.com/paypal_ipn/process',
                                                             // 'http://test.yoursite.com/paypal_ipn/process',

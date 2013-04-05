@@ -2,8 +2,10 @@
 class ComentariosController extends  AppController {
 	var $name = 'Comentarios';
 	var $layout = 'admin';
-		
+
 	function add(){
+            parent::soloAdministrador($this->Auth->user());
+            
 		if (!empty($this ->data) ){
 			$this-> Comentario ->create();
 			if ($this->Comentario->save($this->data)) {
@@ -20,11 +22,18 @@ class ComentariosController extends  AppController {
 		}
 	}
 
-	function index(){
+	function index($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
+            if($id!=null)
+                $this->set('comentarios', $this->Comentario->find('all'), array('conditions' => array('Comentario.usuario_id' => $id)));
+            else
 		$this->set('comentarios', $this->Comentario->find('all'));
 	}
-	
+
 	function edit( $id=null ){
+            parent::soloAdministrador($this->Auth->user());
+
 		if(!$id){
 			$this->Session->setFlash('Comentario invalido');
 			$this->redirect(array('action'=>'index'),null, true);
@@ -40,10 +49,11 @@ class ComentariosController extends  AppController {
 			}
 		}
 	}
-	
-	
-		function delete($id = null){
-		
+
+
+	function delete($id = null){
+            parent::soloAdministrador($this->Auth->user());
+
 		if (!$id){
 			$this->Session->setFlash('ID invalida');
 			$this->redirect(array('action'=>'index', null, true));
@@ -56,6 +66,6 @@ class ComentariosController extends  AppController {
 			$this->redirect(array('action'=>'index', null, true));
 		}
 	}
-	
+
 }
 ?>
